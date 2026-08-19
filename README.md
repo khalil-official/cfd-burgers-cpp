@@ -1,7 +1,7 @@
 # BurgersSolution
 C++ program based on the Fortran version in Eleuterio F. Toro's book for Numerical Methods that computes the solution for the Burgers equation considering periodic boundaries and using the Godunov first order upwind scheme and an exact Riemann solver.
 
-The input and output are hardcoded for now and may need to be altered.
+The input initial conditions are hardcoded for now and may need to be altered.
 
 
 ## Compiling
