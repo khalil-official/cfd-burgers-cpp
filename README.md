@@ -1,4 +1,7 @@
 # BurgersSolution
+
+> **Calendar reconstruction:** The historical records in [`docs/reconstructed-calendar-2026.csv`](docs/reconstructed-calendar-2026.csv) were generated on 2026-10-18. Their historical author dates are synthetic; they do not mean this project, its improvements, or work on them existed on those dates. The actual software improvements were completed on 2026-10-18. Original upstream authorship and history are preserved. Calendar coverage is not a measure of engineering quality or historical working time.
+
 Development edition based on [Elvis Mello's original project](https://github.com/elvismello/BurgersSolution).
 Original authorship, Git history, and the GPL-3.0 license are retained.
 
