@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.20)
+project(BurgersSolution LANGUAGES CXX)
+
+function(configure_burgers_target target)
+    target_compile_features(${target} PRIVATE cxx_std_23)
+    if(MSVC)
+        target_compile_definitions(${target} PRIVATE _USE_MATH_DEFINES)
+        target_compile_options(${target} PRIVATE /W4)
+    else()
+        target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+endfunction()
+
+add_executable(burgers_solution burgers_solution.cpp)
+configure_burgers_target(burgers_solution)
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(test_burgers tests/test_burgers.cpp)
+    configure_burgers_target(test_burgers)
+    add_test(NAME burgers_numerical_regression COMMAND test_burgers)
+endif()

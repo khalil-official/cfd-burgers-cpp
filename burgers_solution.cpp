@@ -202,7 +202,7 @@ int initia (SimulationParams& params)
 
     //int i, test_number, n_cells
     // float domlen
-    float xleft, xpos, xmiddl, xright;
+    float xpos;
 
     params.dx = params.domlen / float(params.n_cells);
 
@@ -260,9 +260,12 @@ int initia (SimulationParams& params)
                 params.u[i] = expf(-100 * (xpos - 0.5) * (xpos - 0.5));
                 break;
 
-            case 2:
+            case 2: {
                 // book square waves
-                if (xpos < 0.1 * params.domlen)
+                const float xleft = 0.1f * params.domlen;
+                const float xmiddl = 0.5f * params.domlen;
+                const float xright = 0.9f * params.domlen;
+                if (xpos < xleft)
                     params.u[i] = -1.0f;
                 else if ((xpos >= xleft) && (xpos <= xmiddl))
                     params.u[i] = 1.0f;
@@ -270,6 +273,8 @@ int initia (SimulationParams& params)
                     params.u[i] = 0.0f;
                 else
                     params.u[i] = -1.0f;
+                break;
+            }
 
             case 3:
                 // smooth sin curve

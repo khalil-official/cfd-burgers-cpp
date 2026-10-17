@@ -1,4 +1,30 @@
 # BurgersSolution
+Development edition based on [Elvis Mello's original project](https://github.com/elvismello/BurgersSolution).
+Original authorship, Git history, and the GPL-3.0 license are retained.
+
+## Local correction and verification
+
+Square-wave initial condition 2 now initializes its three positions from the
+domain length and stops before the sine-wave case. Previously it read
+uninitialized values and then overwrote the square wave with a sine wave.
+A small CMake build supports C++23 and the Windows math constants used upstream.
+
+```powershell
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release --parallel
+ctest --test-dir build -C Release --output-on-failure
+New-Item -ItemType Directory -Force output
+.\build\Release\burgers_solution.exe
+```
+
+Verified on 2026-10-18 with MSVC 19.44: the regression checks square-wave
+plateaus on two domain lengths, periodic Godunov conservation, finite bounded
+updates, and exact Riemann states. The provided Gaussian example also ran to
+its requested final time of 1.0. Other upstream initial conditions and the
+output-file format are outside the scope of this correction.
+
+---
+
 C++ program based on the Fortran version in Eleuterio F. Toro's book for Numerical Methods that computes the solution for the Burgers equation considering periodic boundaries and using the Godunov first order upwind scheme and an exact Riemann solver.
 
 The input initial conditions are hardcoded for now and may need to be altered.

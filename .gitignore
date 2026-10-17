@@ -1,0 +1,5 @@
+build/
+output/
+*.exe
+*.obj
+*.pdb
